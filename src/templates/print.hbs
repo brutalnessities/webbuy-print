@@ -1,0 +1,249 @@
+<mjml>
+  <mj-head>
+    <mj-font name="'Open Sans', Roboto, 'San Francisco', Helvetica, Arial, sans-serif">
+    </mj-font>
+
+    <mj-style inline="inline">
+      .disclaimers p {
+        margin: 0 0 5px;
+        font-size: 10px;
+      }
+    </mj-style>
+
+    <mj-attributes>
+      <mj-all padding="0" />
+      <mj-text font-size="12px" />
+      <mj-table font-size="12px" />
+      <mj-wrapper padding="24px 0" />
+      <mj-image />
+      <mj-section padding="0 0 20px" />
+
+      <mj-class name="h2" font-size="24px" font-weight="bold" />
+      <mj-class name="h3" font-size="18px" font-weight="bold" padding-bottom="6px" />
+      <mj-class name="h4" font-size="12px" font-weight="bold" padding-bottom="6px" />
+
+      <mj-class name="highlight" font-size="24px" font-weight="bolder" color="#2e616f" />
+
+      <mj-class name="pb-0" padding-bottom="0" />
+      <mj-class name="pb-1" padding-bottom="6px" />
+      <mj-class name="pb-2" padding-bottom="12px" />
+      <mj-class name="pb-3" padding-bottom="18px" />
+      <mj-class name="pb-4" padding-bottom="24px" />
+
+      <mj-class name="pt-0" padding-top="0" />
+      <mj-class name="pt-1" padding-top="6px" />
+      <mj-class name="pt-2" padding-top="12px" />
+      <mj-class name="pt-3" padding-top="18px" />
+      <mj-class name="pt-4" padding-top="24px" />
+
+      <mj-class name="pl-0" padding-left="0" />
+      <mj-class name="pl-1" padding-left="6px" />
+      <mj-class name="pl-2" padding-left="12px" />
+      <mj-class name="pl-3" padding-left="18px" />
+      <mj-class name="pl-4" padding-left="24px" />
+
+      <mj-class name="border-bottom" border-bottom="1px solid #80808080" />
+
+    </mj-attributes>
+  </mj-head>
+
+  <mj-body>
+    <mj-wrapper padding="0">
+
+      <!-- 🔸the dealer logo🔸 -->
+      <mj-section css-class="dealerLogo">
+        <mj-column>
+          <mj-image width="100px" src="{{dealerLogo}}">
+          </mj-image>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸the intro text🔸 -->
+      <mj-section css-class="header">
+        <mj-column>
+          <mj-text>Thank you for shopping with {{accountName}}. Here’s a summary of your deal as of {{date}}. You can use the button/link at the bottom to get back into your deal on our website.</mj-text>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸the VOI/item🔸 -->
+      <mj-section mj-class="border-bottom pb-2">
+        <mj-column>
+          <mj-image src="https://cdn-v2.webbuy.dev/prod/b50af1e3-f2b7-11ea-b354-06a83b091c7a/inventory/3FMTK3SU4SMA02841_2025-4-8_22:8:33.jpg"></mj-image>
+        </mj-column>
+
+        <mj-column mj-class="pl-4">
+          <mj-text mj-class="h2">Your {{item.ymm}}</mj-text>
+          <mj-table>
+            {{{item.details}}}
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸Deal Pricing🔸 -->
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h3 pt-4">Deal Pricing</mj-text>
+          <mj-table>
+            {{{pricing.summary}}}
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸Accessories🔸 -->
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h3">Accessories</mj-text>
+          <mj-table mj-class="pl-2">
+            {{{accessories}}}
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸Protection🔸 -->
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h3">Protection</mj-text>
+          <mj-table mj-class="pl-2">
+            {{{protections}}}
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸Taxes & Fees🔸 -->
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h3">Taxes &amp; Fees</mj-text>
+          <mj-table mj-class="pl-2">
+            {{#each taxesAndFees}}
+              <tr>
+                <td>{{this.name}}</td>
+                <td align="right">{{this.amount}}</td>
+              </tr>
+            {{/each}}
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸Trade-in🔸 -->
+      <mj-section>
+        <mj-column>
+
+          <!-- 🔻trade-in details🔻 -->
+          <mj-text mj-class="h3">Your Trade-In</mj-text>
+          <mj-table mj-class="pb-1">
+            {{{trade.details}}}
+          </mj-table>
+          <mj-divider border-color="lightgray" border-width="1px" mj-class="pb-2"></mj-divider>
+
+          <!-- 🔻trade-in valuation🔻 -->
+          <mj-text mj-class="h3">Trade-In</mj-text>
+          <mj-table mj-class="pl-2">
+            {{{trade.valuation}}}
+          </mj-table>
+
+          <!-- 🔻reconditioning costs🔻 -->
+          <mj-text mj-class="pl-2 pt-1" font-size="14px">Reconditioning Costs</mj-text>
+          <mj-table mj-class="pl-4">
+            {{{trade.adjustments}}}
+          </mj-table>
+
+          <!-- 🔻reconditioning fees🔻 -->
+          <mj-text mj-class="pl-2 pt-1" font-size="14px">Reconditioning Fees</mj-text>
+          <mj-table mj-class="pl-4">
+            {{{trade.fees}}}
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸Incentives🔸 -->
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h3">Inventives</mj-text>
+          <mj-table mj-class="pl-2">
+            {{{incentives}}}
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+      <!--🔸Pricing Summary🔸 -->
+      <mj-section mj-class="border-bottom pb-2">
+        <mj-column>
+          <mj-table>
+            {{{pricing.summary}}}
+            <tr>
+              <td>
+              </td>
+              <td></td>
+            </tr>
+          </mj-table>
+
+          <!-- 🔻estimate v. actual🔻 -->
+          <mj-table mj-class="pt-2">
+            <tr>
+              <td style="font-size: 18px; font-weight: bold;">
+                <span style="color: #2e616f; border-right: 2px solid #80808080; padding-right: 6px">Estimated</span>
+                <span style="color:#808080; font-weight: normal">Actual</span>
+                <p style="margin: 0; line-height: 14px; font-size: 14px;">{{pricing.termRate}}</p>
+                <p style="margin: 0 0 6px; line-height: 16px; font-size: 14px;">{{pricing.termLength}}</p>
+              </td>
+              <td align="right"><span style="font-size: 26px; color:#2e616f; font-weight: bolder;">{{pricing.monthlyPayment}}</span>/mo.</td>
+            </tr>
+          </mj-table>
+
+          <mj-table>
+            {{{pricing.dueAtSigning}}}
+          </mj-table>
+
+          <mj-table mj-class="pl-2">
+            {{{pricing.dueBreakdown}}}
+          </mj-table>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸disclaimers🔸 -->
+      <mj-section mj-class="pt-4" css-class="disclaimers">
+        <mj-column>
+          <mj-text>
+            {{{disclaimers.trade}}}
+            {{{disclaimers.protection}}}
+            {{{disclaimers.incentive}}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸lead button🔸 -->
+      <mj-section>
+        <mj-column>
+          <mj-button background-color="#de5e36" color="white" border-radius="24px" href="{{leadLink}}">GO TO MY DEAL</mj-button>
+          <mj-text align="center" padding="12px 24px">Button not working? Visit: <a href="{{leadLink}}">{{leadLink}}</a></mj-text>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸thanks🔸 -->
+      <mj-section background-color="#e8e8e8" mj-class="pb-0">
+        <mj-column padding="24px">
+          <mj-text>
+            <b>{{accountName}}</b> powered by WebBuy thanks you for the opportunity to help you purchase a vehicle on your
+            terms - in a transparent, hassle-free, all-online experience!
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸dealer logo and address🔸 -->
+      <mj-section mj-class="border-bottom pt-4 pb-2">
+        <mj-column>
+          <mj-image width="100px" src="{{dealerLogo}}"></mj-image>
+          <mj-text align="center">{{accountName}} {{address}}</mj-text>
+        </mj-column>
+      </mj-section>
+
+      <!-- 🔸WebBuy logo🔸 -->
+      <mj-section mj-class="pt-4">
+        <mj-column>
+          <mj-text color="#de5e36" font-weight="bold" align="center" padding-bottom="0">Powered By:</mj-text>
+          <mj-image width="175px" src="https://webbuy53811.img-us10.com/public//d61646e8001059555adbe9c318608be3.png?r=1448638815"></mj-image>
+        </mj-column>
+      </mj-section>
+    </mj-wrapper>
+  </mj-body>
+</mjml>
