@@ -143,15 +143,17 @@ renderPrint({
     leadLink: "https://demo-v2.webbuy.dev#webbuyl=49dbd834-1f86-11f0-b682-2c7ba08d226d",
     address: "123 Main Streets Billings, MT 59101",
     phone: "(455) 454-5455",
-    hide: {
-        accessories: "",
-        protections: "",
-        taxesAndFees: "",
-        incentives: "",
+    has: {
+        item: false,
+        accessories: true,
+        protections: true,
+        taxesAndFees: true,
+        incentives: false,
         trade: {
-            none: "",
-            costs: "",
-            fees: "",
+            accepted: true,
+            adjustments: false,
+            fees: true,
         },
+        secondColumn: true,
     },
 });

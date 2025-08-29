@@ -45,15 +45,17 @@ export interface PrintData {
   phone: string;
   
   // remove
-  hide: {
-    accessories: string;
-    protections: string;
-    taxesAndFees: string;
-    incentives: string;
+  has: {
+    item: boolean;
+    accessories: boolean;
+    protections: boolean;
+    taxesAndFees: boolean;
+    incentives: boolean;
     trade: {
-      none: string;
-      costs: string;
-      fees: string;
+      accepted: boolean;
+      adjustments: boolean;
+      fees: boolean;
     };
+    secondColumn: boolean;
   };
 }

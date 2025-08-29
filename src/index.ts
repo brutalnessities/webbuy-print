@@ -14,6 +14,7 @@ const printTemplate = Handlebars.compile(templateSource);
 
 // Render function
 export function renderPrint(data: PrintData): string {
+  
   // Preprocess items for subtotal
 
   // Step 1: Inject data into MJML template
@@ -152,15 +153,17 @@ renderPrint({
     "https://demo-v2.webbuy.dev#webbuyl=49dbd834-1f86-11f0-b682-2c7ba08d226d",
   address: "123 Main Streets Billings, MT 59101",
   phone: "(455) 454-5455",
-  hide: {
-    accessories: "",
-    protections: "",
-    taxesAndFees: "",
-    incentives: "",
+  has: {
+    item: true,
+    accessories: true,
+    protections: true,
+    taxesAndFees: true,
+    incentives: true,
     trade: {
-      none: "",
-      costs: "",
-      fees: "",
+      accepted: true,
+      adjustments: true,
+      fees: true,
     },
+    secondColumn: true,
   },
 });

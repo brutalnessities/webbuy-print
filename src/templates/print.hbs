@@ -1,13 +1,19 @@
 <mjml>
   <mj-head>
-    <mj-font name="'Open Sans', Roboto, 'San Francisco', Helvetica, Arial, sans-serif">
+    <mj-font
+      name="'Open Sans', Roboto, 'San Francisco', Helvetica, Arial, sans-serif"
+    >
     </mj-font>
 
     <mj-style inline="inline">
-      .disclaimers p {
-      margin: 0 0 5px;
-      font-size: 10px;
-      }
+      .disclaimers p { margin: 0 0 5px; font-size: 10px; } .pl-2 { padding-left:
+      12px; } .pl-4 { padding-left: 24px; } .title { padding-left: 20px;
+      padding-right: 12px; text-indent: -8px; } .value { white-space: nowrap;
+      vertical-align: top; } .underline { text-decoration: underline; } .bold {
+      font-weight: bold; } .estimated { color: #2e616f; white-space: nowrap; }
+      .actual { border-left: 2px solid #80808080; padding-left: 6px;
+      margin-left: 3px; color:#808080; font-weight: normal } .payment {
+      font-size: 20px; color:#2e616f; font-weight: bolder; }
     </mj-style>
 
     <mj-style>
@@ -22,15 +28,25 @@
       <mj-image />
       <mj-section padding="0" />
 
-      <mj-class name="groupHeader" padding="6px 0" />
-      <mj-class name="groupBody" padding="0 12px 12px" />
-      <mj-class name="nested" padding-top="0" padding-bottom="6px" />
-      <mj-class name="itemTitle" />
-      <mj-class name="itemPrice" align="right" />
+      <mj-class
+        name="nestedHeader"
+        padding="12px 12px 0"
+        text-decroration="underline"
+      />
 
       <mj-class name="h2" font-size="24px" font-weight="bold" />
-      <mj-class name="h3" font-size="18px" font-weight="bold" padding-bottom="6px" />
-      <mj-class name="h4" font-size="16px" font-weight="bold" padding-bottom="6px" />
+      <mj-class
+        name="h3"
+        font-size="18px"
+        font-weight="bold"
+        padding="12px 0 6px"
+      />
+      <mj-class
+        name="h4"
+        font-size="16px"
+        font-weight="bold"
+        padding-bottom="6px"
+      />
 
       <mj-class name="pb-0" padding-bottom="0" />
       <mj-class name="pb-1" padding-bottom="6px" />
@@ -49,242 +65,226 @@
       <mj-class name="pl-2" padding-left="12px" />
       <mj-class name="pl-3" padding-left="18px" />
       <mj-class name="pl-4" padding-left="24px" />
+
+      <mj-class name="pr-0" padding-right="0" />
+      <mj-class name="pr-1" padding-right="6px" />
+      <mj-class name="pr-2" padding-right="12px" />
+      <mj-class name="pr-3" padding-right="18px" />
+      <mj-class name="pr-4" padding-right="24px" />
+
     </mj-attributes>
   </mj-head>
 
   <mj-body>
-    <mj-wrapper padding="50px 0">
+    <mj-wrapper padding="50px 10px">
 
       <!-- 🔸the VOI/item🔸 -->
-      <mj-section mj-class="border-bottom pb-2">
-        <mj-column>
-          <mj-image src="https://cdn-v2.webbuy.dev/prod/b50af1e3-f2b7-11ea-b354-06a83b091c7a/inventory/3FMTK3SU4SMA02841_2025-4-8_22:8:33.jpg"></mj-image>
-        </mj-column>
+      {{#if has.item}}
+        <mj-section mj-class="border-bottom pb-2">
+          <mj-column mj-class="pb-2">
+            <mj-image
+              src="https://cdn-v2.webbuy.dev/prod/b50af1e3-f2b7-11ea-b354-06a83b091c7a/inventory/3FMTK3SU4SMA02841_2025-4-8_22:8:33.jpg"
+            ></mj-image>
+          </mj-column>
 
-        <mj-column mj-class="pl-4">
-          <mj-text mj-class="h2">Your {{item.ymm}}</mj-text>
-          <mj-table>
-            {{#each item.details}}
-              <tr>
-                <td style="font-weight: bold">{{this.title}}</td>
-                <td align="right">{{this.value}}</td>
-              </tr>
-            {{/each}}
-          </mj-table>
-        </mj-column>
-      </mj-section>
-
-      <!-- 🔸Deal Pricing🔸 -->
-      <mj-section mj-class="groupHeader">
-        <mj-column>
-          <mj-text mj-class="h3 pt-4">Deal Pricing</mj-text>
-        </mj-column>
-      </mj-section>
-      {{#each pricing.summary}}
-        <mj-section mj-class="groupBody">
-          <mj-group>
-            <mj-column mj-class="itemTitle">
-              <mj-text font-weight="bold">{{this.title}}</mj-text>
-            </mj-column>
-            <mj-column>
-              <mj-text mj-class="itemPrice">{{this.value}}</mj-text>
-            </mj-column>
-          </mj-group>
+          <mj-column mj-class="pl-4">
+            <mj-text mj-class="h2">Your {{item.ymm}}</mj-text>
+            <mj-table mj-class="pr-4">
+              {{#each item.details}}
+                <tr>
+                  <td style="font-weight: bold">{{this.title}}</td>
+                  <td align="right">{{this.value}}</td>
+                </tr>
+              {{/each}}
+            </mj-table>
+          </mj-column>
         </mj-section>
-      {{/each}}
+      {{/if}}
 
-      <!-- 🔸Accessories🔸✅ -->
-      <mj-section mj-class="groupHeader">
-        <mj-column>
-          <mj-text mj-class="h3">Accessories</mj-text>
-        </mj-column>
-      </mj-section>
-      {{#each accessories}}
-        <mj-section mj-class="groupBody">
-          <mj-group>
-            <mj-column mj-class="itemTitle">
-              <mj-text>{{this.title}}</mj-text>
-            </mj-column>
-            <mj-column>
-              <mj-text mj-class="itemPrice">{{this.value}}</mj-text>
-            </mj-column>
-          </mj-group>
-        </mj-section>
-      {{/each}}
+      <!-- pricing/trade body -->
+      <mj-section mj-class="pb-4">
 
-      <!-- 🔸Protection🔸✅ -->
-      <mj-section mj-class="groupHeader">
-        <mj-column>
-          <mj-text mj-class="h3">Protection</mj-text>
-        </mj-column>
-      </mj-section>
-      {{#each protections}}
-        <mj-section mj-class="groupBody">
-          <mj-group>
-            <mj-column mj-class="itemTitle">
-              <mj-text>{{this.title}}</mj-text>
-            </mj-column>
-            <mj-column>
-              <mj-text mj-class="itemPrice">{{this.value}}</mj-text>
-            </mj-column>
-          </mj-group>
-        </mj-section>
-      {{/each}}
+        <!-- left column -->
+        {{#if has.item}}
+          <mj-column mj-class="pr-4">
+            <!-- Deal Pricing -->
+            <mj-text mj-class="h3">Deal Pricing</mj-text>
+            <mj-table>
+              {{#each pricing.summary}}
+                <tr>
+                  <td class="title">{{this.title}}</td>
+                  <td align="right" class="value">{{this.value}}</td>
+                </tr>
+              {{/each}}
+            </mj-table>
 
-      <!-- 🔸Taxes & Fees🔸✅ -->
-      <mj-section mj-class="groupHeader">
-        <mj-column>
-          <mj-text mj-class="h3">Taxes &amp; Fees</mj-text>
-        </mj-column>
-      </mj-section>
-      {{#each taxesAndFees}}
-        <mj-section mj-class="groupBody">
-          <mj-group>
-            <mj-column mj-class="itemTitle">
-              <mj-text>{{this.title}}</mj-text>
-            </mj-column>
-            <mj-column>
-              <mj-text mj-class="itemPrice">{{this.value}}</mj-text>
-            </mj-column>
-          </mj-group>
-        </mj-section>
-      {{/each}}
+            <!-- Accessories -->
+            {{#if has.accessories}}
+              <mj-text mj-class="h3">Accessories</mj-text>
+              <mj-table>
+                {{#each accessories}}
+                  <tr>
+                    <td class="title">{{this.title}}</td>
+                    <td align="right" class="value">{{this.value}}</td>
+                  </tr>
+                {{/each}}
+              </mj-table>
+            {{/if}}
 
-      <!-- 🔸Trade-in🔸 -->
-      <!-- trade details -->
-      <mj-section mj-class="groupHeader">
-        <mj-column>
-          <mj-text mj-class="h3">Your Trade-In</mj-text>
-        </mj-column>
-      </mj-section>
-      {{#each trade.details}}
-        <mj-section mj-class="groupBody">
-          <mj-group>
-            <mj-column mj-class="itemTitle">
-              <mj-text font-weight="bold">{{this.title}}</mj-text>
-            </mj-column>
-            <mj-column>
-              <mj-text mj-class="itemPrice">{{this.value}}</mj-text>
-            </mj-column>
-          </mj-group>
-        </mj-section>
-      {{/each}}
-      <mj-section>
-        <mj-column>
-          <mj-divider border-color="lightgray" border-width="1px" mj-class="pb-2"></mj-divider>
-        </mj-column>
-      </mj-section>
+            <!-- Protection -->
+            {{#if has.protections}}
+              <mj-text mj-class="h3">Protection</mj-text>
+              <mj-table>
+                {{#each protections}}
+                  <tr>
+                    <td class="title">{{this.title}}</td>
+                    <td align="right" class="value">{{this.value}}</td>
+                  </tr>
+                {{/each}}
+              </mj-table>
+            {{/if}}
 
-      <!-- trade values -->
-      <mj-section mj-class="groupHeader">
-        <mj-column>
-          <mj-text mj-class="h4">Trade-In</mj-text>
-        </mj-column>
-      </mj-section>
-      {{#each trade.valuation}}
-        <mj-section mj-class="groupBody">
-          <mj-group>
-            <mj-column mj-class="itemTitle">
-              <mj-text>{{this.title}}</mj-text>
-            </mj-column>
-            <mj-column>
-              <mj-text mj-class="itemPrice">{{this.value}}</mj-text>
-            </mj-column>
-          </mj-group>
-        </mj-section>
-      {{/each}}
+            <!-- Taxes and fees -->
+            {{#if has.taxesAndFees}}
+              <mj-text mj-class="h3">Taxes &amp; Fees</mj-text>
+              <mj-table>
+                {{#each taxesAndFees}}
+                  <tr>
+                    <td class="title">{{this.title}}</td>
+                    <td align="right" class="value">{{this.value}}</td>
+                  </tr>
+                {{/each}}
+              </mj-table>
+            {{/if}}
+          </mj-column>
+        {{/if}}
 
-      <!-- trade costs -->
-      <mj-section mj-class="groupHeader nested pl-2">
-        <mj-column>
-          <mj-text>Reconditioning Costs</mj-text>
-        </mj-column>
-      </mj-section>
-      {{#each trade.adjustments}}
-        <mj-section mj-class="groupBody nested pl-4">
-          <mj-group>
-            <mj-column mj-class="itemTitle">
-              <mj-text>{{this.title}}</mj-text>
-            </mj-column>
-            <mj-column>
-              <mj-text mj-class="itemPrice">{{this.value}}</mj-text>
-            </mj-column>
-          </mj-group>
-        </mj-section>
-      {{/each}}
+        <!-- right column -->
+        {{#if has.secondColumn}}
+          <mj-column mj-class="pr-4">
 
-      <!-- trade fees -->
-      <mj-section mj-class="groupHeader nested pl-2 pt-1">
-        <mj-column>
-          <mj-text>Reconditioning Fees</mj-text>
-        </mj-column>
-      </mj-section>
-      {{#each trade.fees}}
-        <mj-section mj-class="groupBody nested pl-4">
-          <mj-group>
-            <mj-column mj-class="itemTitle">
-              <mj-text>{{this.title}}</mj-text>
-            </mj-column>
-            <mj-column>
-              <mj-text mj-class="itemPrice">{{this.value}}</mj-text>
-            </mj-column>
-          </mj-group>
-        </mj-section>
-      {{/each}}
+            <!-- trade -->
+            {{#if has.trade.accepted}}
+              <mj-text mj-class="h3">Your Trade-In</mj-text>
+              <!-- details -->
+              <mj-table>
+                {{#each trade.details}}
+                  <tr>
+                    <td class="title bold">{{this.title}}</td>
+                    <td align="right" class="value">{{this.value}}</td>
+                  </tr>
+                {{/each}}
+              </mj-table>
+              <mj-divider
+                border-color="lightgray"
+                border-width="1px"
+                mj-class="pb-2"
+              ></mj-divider>
 
-      <!-- 🔸Incentives🔸✅ -->
-      <mj-section mj-class="groupHeader">
-        <mj-column>
-          <mj-text mj-class="h3">Incentives</mj-text>
-        </mj-column>
+              <!-- valuation -->
+              <mj-text mj-class="h4">Trade-in</mj-text>
+              <mj-table>
+                {{#each trade.valuation}}
+                  <tr>
+                    <td class="title">{{this.title}}</td>
+                    <td align="right" class="value">{{this.value}}</td>
+                  </tr>
+                {{/each}}
+              </mj-table>
+              <!-- costs -->
+
+              {{#if has.trade.adjustments}}
+                <mj-text
+                  mj-class="nestedHeader"
+                  css-class="underline"
+                >Reconditioning Costs</mj-text>
+                <mj-table mj-class="pl-3">
+                  {{#each trade.adjustments}}
+                    <tr>
+                      <td class="title">{{this.title}}</td>
+                      <td align="right" class="value">{{this.value}}</td>
+                    </tr>
+                  {{/each}}
+                </mj-table>
+              {{/if}}
+
+              <!-- fees -->
+              {{#if has.trade.fees}}
+                <mj-text
+                  mj-class="nestedHeader"
+                  css-class="underline"
+                >Reconditioning Fees</mj-text>
+                <mj-table mj-class="pl-3">
+                  {{#each trade.fees}}
+                    <tr>
+                      <td class="title">{{this.title}}</td>
+                      <td align="right" class="value">{{this.value}}</td>
+                    </tr>
+                  {{/each}}
+                </mj-table>
+              {{/if}}
+            {{/if}}
+
+            <!-- incentives -->
+            {{#if has.incentives}}
+              <mj-text mj-class="h3">Incentives</mj-text>
+              <mj-table>
+                {{#each incentives}}
+                  <tr>
+                    <td class="title">{{this.title}}</td>
+                    <td align="right" class="value">{{this.value}}</td>
+                  </tr>
+                {{/each}}
+              </mj-table>
+            {{/if}}
+          </mj-column>
+        {{/if}}
       </mj-section>
-      {{#each incentives}}
-        <mj-section mj-class="groupBody">
-          <mj-group>
-            <mj-column mj-class="itemTitle">
-              <mj-text>{{this.title}}</mj-text>
-            </mj-column>
-            <mj-column>
-              <mj-text mj-class="itemPrice">{{this.value}}</mj-text>
-            </mj-column>
-          </mj-group>
-        </mj-section>
-      {{/each}}
 
       <!--🔸Pricing Summary🔸 -->
-      <mj-section mj-class="border-bottom pb-2">
-        <mj-column>
-          <mj-table>
-            {{{pricing.summary}}}
-            <tr>
-              <td>
-              </td>
-              <td></td>
-            </tr>
-          </mj-table>
+      {{#if has.item}}
+        <mj-section mj-class="border-bottom pb-2">
+          <mj-column>
+            <mj-table>
+              {{{pricing.summary}}}
+              <tr>
+                <td>
+                </td>
+                <td></td>
+              </tr>
+            </mj-table>
 
-          <!-- 🔻estimate v. actual🔻 -->
-          <mj-table mj-class="pt-2">
-            <tr>
-              <td style="font-size: 18px; font-weight: bold;">
-                <span style="color: #2e616f; border-right: 2px solid #80808080; padding-right: 6px">Estimated</span>
-                <span style="color:#808080; font-weight: normal">Actual</span>
-                <p style="margin: 0; line-height: 14px; font-size: 14px;">{{pricing.termRate}}</p>
-                <p style="margin: 0 0 6px; line-height: 16px; font-size: 14px;">{{pricing.termLength}}</p>
-              </td>
-              <td align="right"><span style="font-size: 26px; color:#2e616f; font-weight: bolder;">{{pricing.monthlyPayment}}</span>/mo.</td>
-            </tr>
-          </mj-table>
+            <!-- 🔻estimate v. actual🔻 -->
+            <mj-table mj-class="pt-2">
+              <tr>
+                <td style="font-size: 14px; font-weight: bold;">
+                  <span class="estimated">Estimated
+                    <span class="actual">Actual</span>
+                  </span>
 
-          <mj-table>
-            {{{pricing.dueAtSigning}}}
-          </mj-table>
+                  <p
+                    style="margin: 0; line-height: 14px; font-size: 14px;"
+                  >{{pricing.termRate}}</p>
+                  <p
+                    style="margin: 0 0 6px; line-height: 16px; font-size: 14px;"
+                  >{{pricing.termLength}}</p>
+                </td>
+                <td align="right"><span
+                    class="payment"
+                  >{{pricing.monthlyPayment}}</span>/mo.</td>
+              </tr>
+            </mj-table>
 
-          <mj-table mj-class="pl-2">
-            {{{pricing.dueBreakdown}}}
-          </mj-table>
-        </mj-column>
-      </mj-section>
+            <mj-table>
+              {{{pricing.dueAtSigning}}}
+            </mj-table>
+
+            <mj-table mj-class="pl-2">
+              {{{pricing.dueBreakdown}}}
+            </mj-table>
+          </mj-column>
+        </mj-section>
+      {{/if}}
 
       <!-- 🔸disclaimers🔸 -->
       <mj-section mj-class="pt-4" css-class="disclaimers">
