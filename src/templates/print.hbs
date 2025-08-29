@@ -21,14 +21,15 @@
       <mj-wrapper padding="24px 0" />
       <mj-image />
       <mj-section padding="0" />
-      
-      <mj-class name="group" padding="10px 0" />
 
+      <mj-class name="groupHeader" padding="6px 0" />
+      <mj-class name="groupBody" padding="0 0 12px" />
+			<mj-class name="itemTitle" />
+      <mj-class name="itemPrice" align="right"/>
+      
       <mj-class name="h2" font-size="24px" font-weight="bold" />
       <mj-class name="h3" font-size="18px" font-weight="bold" padding-bottom="6px" />
       <mj-class name="h4" font-size="12px" font-weight="bold" padding-bottom="6px" />
-
-      <mj-class name="highlight" font-size="24px" font-weight="bolder" color="#2e616f" />
 
       <mj-class name="pb-0" padding-bottom="0" />
       <mj-class name="pb-1" padding-bottom="6px" />
@@ -53,22 +54,7 @@
   </mj-head>
 
   <mj-body>
-    <mj-wrapper padding="0">
-
-      <!-- 🔸the dealer logo🔸 -->
-      <mj-section css-class="dealerLogo">
-        <mj-column>
-          <mj-image width="100px" src="{{dealerLogo}}">
-          </mj-image>
-        </mj-column>
-      </mj-section>
-
-      <!-- 🔸the intro text🔸 -->
-      <mj-section css-class="header">
-        <mj-column>
-          <mj-text>Thank you for shopping with {{accountName}}. Here’s a summary of your deal as of {{date}}. You can use the button/link at the bottom to get back into your deal on our website.</mj-text>
-        </mj-column>
-      </mj-section>
+    <mj-wrapper padding="50px 0">
 
       <!-- 🔸the VOI/item🔸 -->
       <mj-section mj-class="border-bottom pb-2">
@@ -94,44 +80,62 @@
         </mj-column>
       </mj-section>
 
-      <!-- 🔸Accessories🔸 -->
-      <mj-section>
-        <mj-column mj-class="group">
+      <!-- 🔸Accessories🔸✅ -->
+      <mj-section mj-class="groupHeader">
+        <mj-column>
           <mj-text mj-class="h3">Accessories</mj-text>
         </mj-column>
       </mj-section>
       {{#each accessories}}
-      <mj-section>
-        <mj-group>
-          <mj-column mj-class="pl-1">
-            <mj-text>{{this.title}}</mj-text>
-          </mj-column>
-          <mj-column>
-            <mj-text align="right">{{this.price}}</mj-text>
-          </mj-column>
-        </mj-group>
-      </mj-section>
+        <mj-section mj-class="groupBody">
+          <mj-group>
+            <mj-column mj-class="itemTitle">
+              <mj-text>{{this.title}}</mj-text>
+            </mj-column>
+            <mj-column>
+              <mj-text mj-class="itemPrice">{{this.price}}</mj-text>
+            </mj-column>
+          </mj-group>
+        </mj-section>
       {{/each}}
 
-      <!-- 🔸Protection🔸 -->
-      <mj-section>
+      <!-- 🔸Protection🔸✅ -->
+      <mj-section mj-class="groupHeader">
         <mj-column>
           <mj-text mj-class="h3">Protection</mj-text>
-          <mj-table mj-class="pl-2">
-            {{{protections}}}
-          </mj-table>
         </mj-column>
       </mj-section>
+      {{#each protections}}
+        <mj-section mj-class="groupBody">
+          <mj-group>
+            <mj-column mj-class="itemTitle">
+              <mj-text>{{this.title}}</mj-text>
+            </mj-column>
+            <mj-column>
+              <mj-text mj-class="itemPrice">{{this.price}}</mj-text>
+            </mj-column>
+          </mj-group>
+        </mj-section>
+      {{/each}}
 
-      <!-- 🔸Taxes & Fees🔸 -->
-      <mj-section>
+      <!-- 🔸Taxes & Fees🔸✅ -->
+      <mj-section mj-class="groupHeader">
         <mj-column>
           <mj-text mj-class="h3">Taxes &amp; Fees</mj-text>
-          <mj-table mj-class="pl-2">
-            {{{taxesAndFees}}}
-          </mj-table>
         </mj-column>
       </mj-section>
+      {{#each taxesAndFees}}
+        <mj-section mj-class="groupBody">
+          <mj-group>
+            <mj-column mj-class="itemTitle">
+              <mj-text>{{this.title}}</mj-text>
+            </mj-column>
+            <mj-column>
+              <mj-text mj-class="itemPrice">{{this.price}}</mj-text>
+            </mj-column>
+          </mj-group>
+        </mj-section>
+      {{/each}}
 
       <!-- 🔸Trade-in🔸 -->
       <mj-section>
@@ -164,15 +168,24 @@
         </mj-column>
       </mj-section>
 
-      <!-- 🔸Incentives🔸 -->
-      <mj-section>
+      <!-- 🔸Incentives🔸✅ -->
+      <mj-section mj-class="groupHeader">
         <mj-column>
-          <mj-text mj-class="h3">Inventives</mj-text>
-          <mj-table mj-class="pl-2">
-            {{{incentives}}}
-          </mj-table>
+          <mj-text mj-class="h3">Incentives</mj-text>
         </mj-column>
       </mj-section>
+      {{#each incentives}}
+        <mj-section mj-class="groupBody">
+          <mj-group>
+            <mj-column mj-class="itemTitle">
+              <mj-text>{{this.title}}</mj-text>
+            </mj-column>
+            <mj-column>
+              <mj-text mj-class="itemPrice">{{this.price}}</mj-text>
+            </mj-column>
+          </mj-group>
+        </mj-section>
+      {{/each}}
 
       <!--🔸Pricing Summary🔸 -->
       <mj-section mj-class="border-bottom pb-2">
@@ -217,40 +230,6 @@
             {{{disclaimers.protection}}}
             {{{disclaimers.incentive}}}
           </mj-text>
-        </mj-column>
-      </mj-section>
-
-      <!-- 🔸lead button🔸 -->
-      <mj-section>
-        <mj-column>
-          <mj-button background-color="#de5e36" color="white" border-radius="24px" href="{{leadLink}}">GO TO MY DEAL</mj-button>
-          <mj-text align="center" padding="12px 24px">Button not working? Visit: <a href="{{leadLink}}">{{leadLink}}</a></mj-text>
-        </mj-column>
-      </mj-section>
-
-      <!-- 🔸thanks🔸 -->
-      <mj-section background-color="#e8e8e8" mj-class="pb-0">
-        <mj-column padding="24px">
-          <mj-text>
-            <b>{{accountName}}</b> powered by WebBuy thanks you for the opportunity to help you purchase a vehicle on your
-            terms - in a transparent, hassle-free, all-online experience!
-          </mj-text>
-        </mj-column>
-      </mj-section>
-
-      <!-- 🔸dealer logo and address🔸 -->
-      <mj-section mj-class="border-bottom pt-4 pb-2">
-        <mj-column>
-          <mj-image width="100px" src="{{dealerLogo}}"></mj-image>
-          <mj-text align="center">{{accountName}} {{address}}</mj-text>
-        </mj-column>
-      </mj-section>
-
-      <!-- 🔸WebBuy logo🔸 -->
-      <mj-section mj-class="pt-4">
-        <mj-column>
-          <mj-text color="#de5e36" font-weight="bold" align="center" padding-bottom="0">Powered By:</mj-text>
-          <mj-image width="175px" src="https://webbuy53811.img-us10.com/public//d61646e8001059555adbe9c318608be3.png?r=1448638815"></mj-image>
         </mj-column>
       </mj-section>
     </mj-wrapper>

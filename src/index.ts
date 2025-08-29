@@ -3,6 +3,7 @@ import path from "path";
 import Handlebars from "handlebars";
 import mjml2html from "mjml";
 import { PrintData } from "./types";
+import clipboard from "clipboardy";
 
 // Read the MJML template
 const templatePath = path.join(__dirname, "templates", "print.hbs");
@@ -24,11 +25,12 @@ export function renderInvoice(data: PrintData): string {
   if (errors && errors.length > 0) {
     console.warn("MJML compilation errors:", errors);
   }
-  console.log("🎯", html);
 
   // testing: save the file to check the render
   fs.writeFileSync(path.join(__dirname, "test.html"), html);
 
+  // TODO: remove clipboardy
+  clipboard.writeSync(html);
   return html;
 }
 
@@ -76,11 +78,27 @@ renderInvoice({
     { title: "CJT-3", price: "$300" },
     { title: "CJT-4", price: "$400" },
   ],
-
-  protections:
-    "<tr><td style=''>IGS Test Product #1</td><td align='right'>$117.32</td></tr><tr><td style=''>Key Replacement Plan</td><td align='right'>$803</td></tr><tr><td style=''>5 Year Platinum Coverage</td><td align='right'>$864</td></tr><tr><td style=''>IGS Test Product #2</td><td align='right'>$106.10</td></tr><tr><td style=''>Service Contract Platinum 60mo/60,000mi $100 Deductible</td><td align='right'>$2,395</td></tr>",
-  taxesAndFees:
-    "<tr><td style=''>Acquisition Fee</td><td align='right'>$695</td></tr><tr><td style=''>IGS Test Product #1</td><td align='right'>$117.32</td></tr><tr><td style=''>Key Replacement Plan</td><td align='right'>$803</td></tr><tr><td style=''>5 Year Platinum Coverage</td><td align='right'>$864</td></tr><tr><td style=''>IGS Test Product #2</td><td align='right'>$106.10</td></tr><tr><td style=''>Service Contract Platinum 60mo/60,000mi $100 Deductible</td><td align='right'>$2,395</td></tr>",
+  protections: [
+    { title: "IGS Test Product #1", price: "$117.32" },
+    { title: "Key Replacement Plan", price: "$803" },
+    { title: "5 Year Platinum Coverage", price: "$864" },
+    { title: "IGS Test Product #2", price: "$106.10" },
+    {
+      title: "Service Contract Platinum 60mo/60,000mi $100 Deductible",
+      price: "$2,395",
+    },
+  ],
+  taxesAndFees: [
+    { title: "Acquisition Fee", price: "$695" },
+    { title: "IGS Test Product #1", price: "$117.32" },
+    { title: "Key Replacement Plan", price: "$803" },
+    { title: "5 Year Platinum Coverage", price: "$864" },
+    { title: "IGS Test Product #2", price: "$106.10" },
+    {
+      title: "Service Contract Platinum 60mo/60,000mi $100 Deductible",
+      price: "$2,395",
+    },
+  ],
   disclaimers: {
     trade:
       '<tr><td align="left" style="font-size:0px;padding:6px 0 3px;word-break:break-word;"><div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:12px;font-weight:bold;line-height:1;text-align:left;color:#000000;">Trade In Disclaimer</div></td></tr><tr><td align="left" style="font-size:0px;padding:0;word-break:break-word;padding-bottom:6px;"><div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:12px;line-height:1;text-align:left;color:#000000;">If we find significant issues not represented here, the offer may change and consequently affect your financing.<br /><p>this is a trade disclaimer without any of the nbsp</p></div></td></tr>',

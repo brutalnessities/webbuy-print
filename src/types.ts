@@ -1,3 +1,8 @@
+export interface RowItem {
+  title: string;
+  price: string;
+}
+
 export interface PrintData {
   date: string;
   visitorName: string;
@@ -25,12 +30,9 @@ export interface PrintData {
     breakdown: string;
   };
   incentives: string;
-  accessories: {
-    title: string;
-    price: string;
-  }[];
-  protections: string;
-  taxesAndFees: string;
+  accessories: RowItem[];
+  protections: RowItem[];
+  taxesAndFees: RowItem[];
   disclaimers: {
     trade: string;
     protection: string;
