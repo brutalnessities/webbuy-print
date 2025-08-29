@@ -2,7 +2,6 @@
   "name": "webbuy-print",
   "version": "1.0.0",
   "main": "src/index.js",
-  "license": "MIT",
   "dependencies": {
     "clipboardy": "^4.0.0",
     "handlebars": "^4.7.8",
@@ -10,8 +9,7 @@
   },
   "browser": {
     "fs": true,
-    "path": true,
-    "os": true
+    "path": true
   },
   "devDependencies": {
     "@types/node": "^24.3.0",
