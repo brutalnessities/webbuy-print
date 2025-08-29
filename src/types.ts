@@ -25,7 +25,10 @@ export interface PrintData {
     breakdown: string;
   };
   incentives: string;
-  accessories: string;
+  accessories: {
+    title: string;
+    price: string;
+  }[];
   protections: string;
   taxesAndFees: string;
   disclaimers: {

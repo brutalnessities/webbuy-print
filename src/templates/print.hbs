@@ -5,18 +5,24 @@
 
     <mj-style inline="inline">
       .disclaimers p {
-        margin: 0 0 5px;
-        font-size: 10px;
+      margin: 0 0 5px;
+      font-size: 10px;
       }
+    </mj-style>
+
+    <mj-style>
+
     </mj-style>
 
     <mj-attributes>
       <mj-all padding="0" />
-      <mj-text font-size="12px" />
-      <mj-table font-size="12px" />
+      <mj-text font-size="14px" />
+      <mj-table font-size="14px" />
       <mj-wrapper padding="24px 0" />
       <mj-image />
-      <mj-section padding="0 0 20px" />
+      <mj-section padding="0" />
+      
+      <mj-class name="group" padding="10px 0" />
 
       <mj-class name="h2" font-size="24px" font-weight="bold" />
       <mj-class name="h3" font-size="18px" font-weight="bold" padding-bottom="6px" />
@@ -42,8 +48,7 @@
       <mj-class name="pl-3" padding-left="18px" />
       <mj-class name="pl-4" padding-left="24px" />
 
-      <mj-class name="border-bottom" border-bottom="1px solid #80808080" />
-
+      <mj-class name="tt" font-weight="bold" />
     </mj-attributes>
   </mj-head>
 
@@ -91,13 +96,22 @@
 
       <!-- 🔸Accessories🔸 -->
       <mj-section>
-        <mj-column>
+        <mj-column mj-class="group">
           <mj-text mj-class="h3">Accessories</mj-text>
-          <mj-table mj-class="pl-2">
-            {{{accessories}}}
-          </mj-table>
         </mj-column>
       </mj-section>
+      {{#each accessories}}
+      <mj-section>
+        <mj-group>
+          <mj-column mj-class="pl-1">
+            <mj-text>{{this.title}}</mj-text>
+          </mj-column>
+          <mj-column>
+            <mj-text align="right">{{this.price}}</mj-text>
+          </mj-column>
+        </mj-group>
+      </mj-section>
+      {{/each}}
 
       <!-- 🔸Protection🔸 -->
       <mj-section>
@@ -114,12 +128,7 @@
         <mj-column>
           <mj-text mj-class="h3">Taxes &amp; Fees</mj-text>
           <mj-table mj-class="pl-2">
-            {{#each taxesAndFees}}
-              <tr>
-                <td>{{this.name}}</td>
-                <td align="right">{{this.amount}}</td>
-              </tr>
-            {{/each}}
+            {{{taxesAndFees}}}
           </mj-table>
         </mj-column>
       </mj-section>

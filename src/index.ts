@@ -5,7 +5,7 @@ import mjml2html from "mjml";
 import { PrintData } from "./types";
 
 // Read the MJML template
-const templatePath = path.join(__dirname, "templates", "print.mjml");
+const templatePath = path.join(__dirname, "templates", "print.hbs");
 const templateSource = fs.readFileSync(templatePath, "utf-8");
 
 // Compile Handlebars
@@ -70,8 +70,13 @@ renderInvoice({
   },
   incentives:
     "<tr><td style=''>Acura Military Appreciation Offer</td><td align='right'>$750</td></tr><tr><td style=''>Acura Graduate Offer</td><td align='right'>$500</td></tr>",
-  accessories:
-    "<tr><td style=''>IGS 12</td><td align='right'>$205.97</td></tr><tr><td style=''>IGS</td><td align='right'>$100</td></tr><tr><td style=''>Bedliner</td><td align='right'>$296</td></tr><tr><td style=''>Tool Box</td><td align='right'>$387</td></tr><tr><td style=''>IGS #5</td><td align='right'>$123.11</td></tr><tr><td style=''>VAV IGS</td><td align='right'>$138</td></tr><tr><td style=''>6151 IGS #2</td><td align='right'>$100</td></tr><tr><td style=''>Remote Start</td><td align='right'>$690</td></tr><tr><td style=''>Remote Start</td><td align='right'>$690</td></tr><tr><td style=''>Spoiler</td><td align='right'>$269</td></tr><tr><td style=''>Remote Start</td><td align='right'>$700</td></tr><tr><td style=''>Remote Start</td><td align='right'>$700</td></tr><tr><td style=''>Remote Start</td><td align='right'>$700</td></tr><tr><td style=''>Remote Start</td><td align='right'>$700</td></tr><tr><td style=''>SUBARU STARLINK</td><td align='right'>$179.99</td></tr><tr><td style=''>Spoiler</td><td align='right'>$940</td></tr><tr><td style=''>Accessory Grille</td><td align='right'>$629.95</td></tr><tr><td style=''>Accessory Grille</td><td align='right'>$829.95</td></tr><tr><td style=''>IGS Accessory #2</td><td align='right'>$127.22</td></tr><tr><td style=''>Clear Bra</td><td align='right'>$642</td></tr><tr><td style=''>Step Rails</td><td align='right'>$782</td></tr><tr><td style=''>Aero Splash Guards</td><td align='right'>$187.45</td></tr><tr><td style=''>Window Tint</td><td align='right'>$701</td></tr><tr><td style=''>Grill Guard</td><td align='right'>$143</td></tr><tr><td style=''>Wheel Locks</td><td align='right'>$344</td></tr><tr><td style=''>Window Tint</td><td align='right'>$162</td></tr><tr><td style=''>Window Tint</td><td align='right'>$701</td></tr><tr><td style=''>Window Tint</td><td align='right'>$701</td></tr><tr><td style=''>Window Tint</td><td align='right'>$701</td></tr><tr><td style=''>16-Inch Alloy Wheel</td><td align='right'>$1,448.84</td></tr><tr><td style=''>16-Inch Alloy Wheel</td><td align='right'>$1,516.96</td></tr><tr><td style=''>Window Tint</td><td align='right'>$443</td></tr><tr><td style=''>Remote Start</td><td align='right'>$29</td></tr><tr><td style=''>17- Inch Alloy Wheel</td><td align='right'>$1,830.28</td></tr><tr><td style=''>DVD Headrests</td><td align='right'>$988</td></tr><tr><td style=''>All Weather Floor Mats</td><td align='right'>$200</td></tr><tr><td style=''>All Weather Mats</td><td align='right'>$438</td></tr><tr><td style=''>Accessory Activity Mount</td><td align='right'>$773.50</td></tr><tr><td style=''>ADVANCED GLASS PROTECTION</td><td align='right'>$1,999</td></tr><tr><td style=''>Montana Wilderness Package</td><td align='right'>$2,899</td></tr><tr><td style=''>This is a very long accessory name made for testing</td><td align='right'>$1</td></tr>",
+  accessories: [
+    { title: "CJT-1", price: "$100" },
+    { title: "CJT-2", price: "$200" },
+    { title: "CJT-3", price: "$300" },
+    { title: "CJT-4", price: "$400" },
+  ],
+
   protections:
     "<tr><td style=''>IGS Test Product #1</td><td align='right'>$117.32</td></tr><tr><td style=''>Key Replacement Plan</td><td align='right'>$803</td></tr><tr><td style=''>5 Year Platinum Coverage</td><td align='right'>$864</td></tr><tr><td style=''>IGS Test Product #2</td><td align='right'>$106.10</td></tr><tr><td style=''>Service Contract Platinum 60mo/60,000mi $100 Deductible</td><td align='right'>$2,395</td></tr>",
   taxesAndFees:
