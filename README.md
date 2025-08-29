@@ -6,14 +6,16 @@ MJML useful links:
  - 'ending tags' will not generate styles that comform to email-html. https://documentation.mjml.io/#ending-tags
 
 eg. instead of doing:
+```
   <mj-table>
     <tr>
       <td style="padding: 0 12px 0 0;">1995</td>
       <td align="right">JavaScript</td>
     </tr>
   </mj-table>
-
+```
 prefer:
+```
 <mj-section>
   <mj-column>
     <mj-text mj-class="pl-2">Title</mj-text>
@@ -22,7 +24,7 @@ prefer:
     <mj-text align="right">Title</mj-text>
   </mj-column>
 </mj-section>
-
+```
 
 Handlebars links:
  - documentation = https://handlebarsjs.com/guide/builtin-helpers.html
