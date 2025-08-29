@@ -5,19 +5,19 @@ import mjml2html from "mjml";
 import { PrintData } from "./types";
 import clipboard from "clipboardy";
 
-// Read the MJML template
+// Read the MJML/Handlebars template
 const templatePath = path.join(__dirname, "templates", "print.hbs");
 const templateSource = fs.readFileSync(templatePath, "utf-8");
 
 // Compile Handlebars
-const invoiceTemplate = Handlebars.compile(templateSource);
+const printTemplate = Handlebars.compile(templateSource);
 
 // Render function
-export function renderInvoice(data: PrintData): string {
+export function renderPrint(data: PrintData): string {
   // Preprocess items for subtotal
 
   // Step 1: Inject data into MJML template
-  const mjmlWithData = invoiceTemplate({ ...data });
+  const mjmlWithData = printTemplate({ ...data });
 
   // Step 2: Compile MJML to HTML
   const { html, errors } = mjml2html(mjmlWithData, { minify: true });
@@ -35,7 +35,7 @@ export function renderInvoice(data: PrintData): string {
 }
 
 //test
-renderInvoice({
+renderPrint({
   date: "2025-04-22 08:30:07",
   visitorName: "asdoiansd asodinasodi",
   accountName: "Lead Motors",
