@@ -1,6 +1,8 @@
 export interface RowItem {
   title: string;
-  price: string;
+  value: string;
+  category?: string;
+  calculation?: string;
 }
 
 export interface PrintData {
@@ -9,27 +11,27 @@ export interface PrintData {
   accountName: string;
   dealerLogo: string;
   item: {
-    details: string;
+    details: RowItem[];
     ymm: string;
     image: string;
   };
   trade: {
-    valuation: string;
-    details: string;
-    adjustments: string;
-    fees: string;
+    valuation: RowItem[];
+    details: RowItem[];
+    adjustments: RowItem[];
+    fees: RowItem[];
   };
   pricing: {
     monthlyPayment: string;
-    summary: string;
+    summary: RowItem[];
     termRate: string;
     termLength: string;
     offerType: string;
-    dueAtSigning: string;
-    dueBreakdown: string;
-    breakdown: string;
+    dueAtSigning: RowItem;
+    dueBreakdown: RowItem[];
+    breakdown: RowItem[];
   };
-  incentives: string;
+  incentives: RowItem[];
   accessories: RowItem[];
   protections: RowItem[];
   taxesAndFees: RowItem[];
@@ -41,6 +43,8 @@ export interface PrintData {
   leadLink: string;
   address: string;
   phone: string;
+  
+  // remove
   hide: {
     accessories: string;
     protections: string;

@@ -3,22 +3,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderInvoice = renderInvoice;
+exports.renderPrint = renderPrint;
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
 const handlebars_1 = __importDefault(require("handlebars"));
 const mjml_1 = __importDefault(require("mjml"));
 const clipboardy_1 = __importDefault(require("clipboardy"));
-// Read the MJML template
+// Read the MJML/Handlebars template
 const templatePath = path_1.default.join(__dirname, "templates", "print.hbs");
 const templateSource = fs_1.default.readFileSync(templatePath, "utf-8");
 // Compile Handlebars
-const invoiceTemplate = handlebars_1.default.compile(templateSource);
+const printTemplate = handlebars_1.default.compile(templateSource);
 // Render function
-function renderInvoice(data) {
+function renderPrint(data) {
     // Preprocess items for subtotal
     // Step 1: Inject data into MJML template
-    const mjmlWithData = invoiceTemplate({ ...data });
+    const mjmlWithData = printTemplate({ ...data });
     // Step 2: Compile MJML to HTML
     const { html, errors } = (0, mjml_1.default)(mjmlWithData, { minify: true });
     if (errors && errors.length > 0) {
@@ -31,58 +31,108 @@ function renderInvoice(data) {
     return html;
 }
 //test
-renderInvoice({
+renderPrint({
     date: "2025-04-22 08:30:07",
     visitorName: "asdoiansd asodinasodi",
     accountName: "Lead Motors",
     dealerLogo: "https://webbuy-v2-api-seed-assets.s3-us-west-2.amazonaws.com/accounts/lead_motors.png",
     item: {
-        details: "<tr><td style='font-weight: bold;'>Trim</td><td align='right'>Type S</td></tr><tr><td style='font-weight: bold;'>Mileage</td><td align='right'>5</td></tr><tr><td style='font-weight: bold;'>VIN</td><td align='right'>19UUB7F0XSA000419</td></tr><tr><td style='font-weight: bold;'>Stock ID</td><td align='right'>SA000419</td></tr>",
+        details: [
+            { title: "Trim", value: "Type S" },
+            { title: "Mileage", value: "5" },
+            { title: "VIN", value: "19UUB7F0XSA000419" },
+            { title: "Stock ID", value: "SA000419" },
+        ],
         ymm: "2025 Acura TLX",
         image: "http://localhost:4201/assets/2025/19UUB7F0XSA000419.jpg",
     },
     trade: {
-        valuation: "<tr><td style=''>Trade-In Equity</td><td align='right'>$16,495.70</td></tr><tr><td style=''>Book Value</td><td align='right'>$16,925</td></tr>",
-        details: "<tr><td style='font-weight: bold;'>Vehicle</td><td align='right'>2021 Subaru Crosstrek</td></tr><tr><td style='font-weight: bold;'>Mileage</td><td align='right'>106,000</td></tr><tr><td style='font-weight: bold;'>VIN</td><td align='right'>JF2GTHRC7MH288660</td></tr><tr><td style='font-weight: bold;'>Lien</td><td align='right'>$2,344</td></tr><tr><td style='font-weight: bold;'>Lienholder</td><td align='right'>asdasdcasd</td></tr>",
-        adjustments: "<tr><td style=''>Has Fluid Leaks</td><td align='right'>$38</td></tr><tr><td style=''>Has Fluid Leaks</td><td align='right'>$691</td></tr><tr><td style=''>Test Electrical</td><td align='right'>-$111</td></tr><tr><td style=''>Body has rust</td><td align='right'>-$123</td></tr><tr><td style=''>Has Fluid Leaks</td><td align='right'>-$996</td></tr><tr><td style=''>Tires worn ( less than 30% tread left)</td><td align='right'>$927</td></tr><tr><td style=''>Tires worn ( less than 30% tread left)</td><td align='right'>-$744</td></tr>",
-        fees: "<tr><td style=''>sample fee2</td><td align='right'>$1,000</td></tr><tr><td style=''>Administration Fee</td><td align='right'>$815.28</td></tr><tr><td style=''>Administration Fee</td><td align='right'>$815.28</td></tr><tr><td style=''>Inspection Fee</td><td align='right'>-$198.93</td></tr><tr><td style=''>Inspection Fee</td><td align='right'>-$198.93</td></tr>",
+        valuation: [
+            { title: "Trade-In Equity", value: "$16,495.70" },
+            { title: "Book Value", value: "$16,925" },
+        ],
+        details: [
+            { title: "Vehicle", value: "2021 Subaru Crosstrek" },
+            { title: "Mileage", value: "106,000" },
+            { title: "VIN", value: "JF2GTHRC7MH288660" },
+            { title: "Lien", value: "$2,344" },
+            { title: "Lienholder", value: "asdasdcasd" },
+        ],
+        adjustments: [
+            { title: "Has Fluid Leaks", value: "$38" },
+            { title: "Has Fluid Leaks", value: "$691" },
+            { title: "Test Electrical", value: "-$111" },
+            { title: "Body has rust", value: "-$123" },
+            { title: "Has Fluid Leaks", value: "-$996" },
+            { title: "Tires worn ( less than 30% tread left)", value: "$927" },
+            { title: "Tires worn ( less than 30% tread left)", value: "-$744" },
+        ],
+        fees: [
+            { title: "sample fee2", value: "$1,000" },
+            { title: "Administration Fee", value: "$815.28" },
+            { title: "Administration Fee", value: "$815.28" },
+            { title: "Inspection Fee", value: "-$198.93" },
+            { title: "Inspection Fee", value: "-$198.93" },
+        ],
     },
     pricing: {
         monthlyPayment: "$750.61",
-        summary: "<tr><td style='font-weight: bold;'>Dealer Price</td><td align='right'>$59,845</td></tr><tr><td style='font-weight: bold;'>Your Price</td><td align='right'>$59,695</td></tr>",
+        summary: [
+            { title: "Dealer Price", value: "$59,845" },
+            { title: "Your Price", value: "$59,695" },
+        ],
         termRate: "60 mo.",
         termLength: "10,000 mi/yr",
         offerType: "",
-        dueAtSigning: "<tr><td style='font-weight: bold;'>Due at Signing</td><td align='right'>$20,036.03</td></tr>",
-        dueBreakdown: "<tr><td style=''>First Monthly Payment</td><td align='right'>$750.61</td></tr><tr><td style=''>IGS Test Product #1</td><td align='right'>$117.32</td></tr><tr><td style=''>Key Replacement Plan</td><td align='right'>$803</td></tr><tr><td style=''>5 Year Platinum Coverage</td><td align='right'>$864</td></tr><tr><td style=''>IGS Test Product #2</td><td align='right'>$106.10</td></tr><tr><td style=''>Service Contract Platinum 60mo/60,000mi $100 Deductible</td><td align='right'>$2,395</td></tr>",
-        breakdown: "<tr><td style='font-weight: bold;'>Cash Down</td><td align='right'>$15,000</td></tr><tr><td style='font-weight: bold;'>Gross Capitalized Cost</td><td align='right'>$85,832.22</td></tr><tr><td style='font-weight: bold;'>Total Cap. Cost Reduction</td><td align='right'>$31,495.70</td></tr><tr><td style='font-weight: bold;'>Adjusted Cap. Cost</td><td align='right'>$55,031.52</td></tr><tr><td style='font-weight: bold;'>Credit Tier</td><td align='right'>test</td></tr>",
+        dueAtSigning: { title: "Due at Signing", value: "$20,036.03" },
+        dueBreakdown: [
+            { title: "First Monthly Payment", value: "$750.61" },
+            { title: "IGS Test Product #1", value: "$117.32" },
+            { title: "Key Replacement Plan", value: "$803" },
+            { title: "5 Year Platinum Coverage", value: "$864" },
+            { title: "IGS Test Product #2", value: "$106.10" },
+            {
+                title: "Service Contract Platinum 60mo/60,000mi $100 Deductible",
+                value: "$2,395",
+            },
+        ],
+        breakdown: [
+            { title: "Cash Down", value: "$15,000" },
+            { title: "Gross Capitalized Cost", value: "$85,832.22" },
+            { title: "Total Cap. Cost Reduction", value: "$31,495.70" },
+            { title: "Adjusted Cap. Cost", value: "$55,031.52" },
+            { title: "Credit Tier", value: "test" },
+        ],
     },
-    incentives: "<tr><td style=''>Acura Military Appreciation Offer</td><td align='right'>$750</td></tr><tr><td style=''>Acura Graduate Offer</td><td align='right'>$500</td></tr>",
+    incentives: [
+        { title: "Acura Military Appreciation Offer", value: "$750" },
+        { title: "Acura Graduate Offer", value: "$500" },
+    ],
     accessories: [
-        { title: "CJT-1", price: "$100" },
-        { title: "CJT-2", price: "$200" },
-        { title: "CJT-3", price: "$300" },
-        { title: "CJT-4", price: "$400" },
+        { title: "CJT-1", value: "$100" },
+        { title: "CJT-2", value: "$200" },
+        { title: "CJT-3", value: "$300" },
+        { title: "CJT-4", value: "$400" },
     ],
     protections: [
-        { title: "IGS Test Product #1", price: "$117.32" },
-        { title: "Key Replacement Plan", price: "$803" },
-        { title: "5 Year Platinum Coverage", price: "$864" },
-        { title: "IGS Test Product #2", price: "$106.10" },
+        { title: "IGS Test Product #1", value: "$117.32" },
+        { title: "Key Replacement Plan", value: "$803" },
+        { title: "5 Year Platinum Coverage", value: "$864" },
+        { title: "IGS Test Product #2", value: "$106.10" },
         {
             title: "Service Contract Platinum 60mo/60,000mi $100 Deductible",
-            price: "$2,395",
+            value: "$2,395",
         },
     ],
     taxesAndFees: [
-        { title: "Acquisition Fee", price: "$695" },
-        { title: "IGS Test Product #1", price: "$117.32" },
-        { title: "Key Replacement Plan", price: "$803" },
-        { title: "5 Year Platinum Coverage", price: "$864" },
-        { title: "IGS Test Product #2", price: "$106.10" },
+        { title: "Acquisition Fee", value: "$695" },
+        { title: "IGS Test Product #1", value: "$117.32" },
+        { title: "Key Replacement Plan", value: "$803" },
+        { title: "5 Year Platinum Coverage", value: "$864" },
+        { title: "IGS Test Product #2", value: "$106.10" },
         {
             title: "Service Contract Platinum 60mo/60,000mi $100 Deductible",
-            price: "$2,395",
+            value: "$2,395",
         },
     ],
     disclaimers: {
