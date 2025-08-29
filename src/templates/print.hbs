@@ -107,7 +107,8 @@
         <!-- left column -->
         {{#if has.item}}
           <mj-column mj-class="pr-4">
-            <!-- Deal Pricing -->
+
+            <!-- 🔸Deal Pricing🔸 -->
             <mj-text mj-class="h3">Deal Pricing</mj-text>
             <mj-table>
               {{#each pricing.summary}}
@@ -118,7 +119,7 @@
               {{/each}}
             </mj-table>
 
-            <!-- Accessories -->
+            <!-- 🔸Accessories🔸 -->
             {{#if has.accessories}}
               <mj-text mj-class="h3">Accessories</mj-text>
               <mj-table>
@@ -131,7 +132,7 @@
               </mj-table>
             {{/if}}
 
-            <!-- Protection -->
+            <!-- 🔸Protection🔸 -->
             {{#if has.protections}}
               <mj-text mj-class="h3">Protection</mj-text>
               <mj-table>
@@ -144,7 +145,7 @@
               </mj-table>
             {{/if}}
 
-            <!-- Taxes and fees -->
+            <!-- 🔸Taxes and Fees🔸 -->
             {{#if has.taxesAndFees}}
               <mj-text mj-class="h3">Taxes &amp; Fees</mj-text>
               <mj-table>
@@ -163,9 +164,10 @@
         {{#if has.secondColumn}}
           <mj-column mj-class="pr-4">
 
-            <!-- trade -->
+            <!-- 🔸Trade-In🔸 -->
             {{#if has.trade.accepted}}
               <mj-text mj-class="h3">Your Trade-In</mj-text>
+
               <!-- details -->
               <mj-table>
                 {{#each trade.details}}
@@ -191,8 +193,8 @@
                   </tr>
                 {{/each}}
               </mj-table>
-              <!-- costs -->
 
+              <!-- costs -->
               {{#if has.trade.adjustments}}
                 <mj-text
                   mj-class="nestedHeader"
@@ -225,7 +227,7 @@
               {{/if}}
             {{/if}}
 
-            <!-- incentives -->
+            <!-- 🔸Incentives🔸 -->
             {{#if has.incentives}}
               <mj-text mj-class="h3">Incentives</mj-text>
               <mj-table>
@@ -237,6 +239,7 @@
                 {{/each}}
               </mj-table>
             {{/if}}
+
           </mj-column>
         {{/if}}
       </mj-section>
