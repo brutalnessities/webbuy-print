@@ -44,7 +44,7 @@ renderPrint({
       { title: "Stock ID", value: "SA000419" },
     ],
     ymm: "2025 Acura TLX",
-    image: "http://localhost:4201/assets/2025/19UUB7F0XSA000419.jpg",
+    image: "https://cdn-v2.webbuy.dev/prod/b50af1e3-f2b7-11ea-b354-06a83b091c7a/inventory/3FMTK3SU4SMA02841_2025-4-8_22:8:33.jpg",
   },
   trade: {
     valuation: [
