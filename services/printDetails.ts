@@ -2,9 +2,8 @@ import fs from "fs";
 import path from "path";
 import Handlebars from "handlebars";
 import mjml2html from "mjml";
-import { PrintData } from "./types";
-import clipboard from "clipboardy";
 import mockData from "../mocks/finance-with-trade.json";
+import clipboard from "clipboardy";
 
 // Read the MJML/Handlebars template
 const templatePath = path.join(__dirname, "templates", "print.hbs");
@@ -14,7 +13,7 @@ const templateSource = fs.readFileSync(templatePath, "utf-8");
 const printTemplate = Handlebars.compile(templateSource);
 
 // Render function
-export function renderPrint(data: PrintData): string {
+export function compile(data: any): string {
   // Preprocess items for subtotal
 
   // Step 1: Inject data into MJML template
@@ -28,11 +27,12 @@ export function renderPrint(data: PrintData): string {
   }
 
   // testing: save the file to check the render
-  fs.writeFileSync('./dist/test.html', html);
+  fs.writeFileSync(path.join(__dirname, "test.html"), html);
 
   // TODO: remove clipboardy
-  clipboard.writeSync(html);
+  clipboard.writeSync(`{html: ${html}}`);
   return html;
 }
 
-renderPrint(mockData.data);
+//test
+compile(mockData.data);
