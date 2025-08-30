@@ -14,7 +14,6 @@ const printTemplate = Handlebars.compile(templateSource);
 
 // Render function
 export function renderPrint(data: PrintData): string {
-  
   // Preprocess items for subtotal
 
   // Step 1: Inject data into MJML template
@@ -40,8 +39,7 @@ renderPrint({
   date: "2025-04-22 08:30:07",
   visitorName: "asdoiansd asodinasodi",
   accountName: "Lead Motors",
-  dealerLogo:
-    "https://webbuy-v2-api-seed-assets.s3-us-west-2.amazonaws.com/accounts/lead_motors.png",
+  dealerLogo: "https://webbuy-v2-api-seed-assets.s3-us-west-2.amazonaws.com/accounts/lead_motors.png",
   item: {
     details: [
       { title: "Trim", value: "Type S" },
@@ -142,15 +140,12 @@ renderPrint({
     },
   ],
   disclaimers: {
-    trade:
-      '<p>this is a trade disclaimer without any of the nbsp</p>',
-    protection:
-      '<p>this is protection disclaimer without any of the nbsp</p>',
+    trade: "<p>this is a trade disclaimer without any of the nbsp</p>",
+    protection: "<p>this is protection disclaimer without any of the nbsp</p>",
     incentive:
-      '<p>EVERY EFFORT IS MADE TO ENSURE THE ACCURACY OF INCENTIVES/REBATES. HOWEVER, INCENTIVES AND REBATES CAN CHANGE ANYTIME WITHOUT NOTICE. FINAL DETERMINATION OF AVAILABLE OFFERS AND ELIGIBILITY WILL BE MADE AT THE TIME OF DELIVERY. SEE DEALER FOR DETAILS.</p>',
+      "<p>EVERY EFFORT IS MADE TO ENSURE THE ACCURACY OF INCENTIVES/REBATES. HOWEVER, INCENTIVES AND REBATES CAN CHANGE ANYTIME WITHOUT NOTICE. FINAL DETERMINATION OF AVAILABLE OFFERS AND ELIGIBILITY WILL BE MADE AT THE TIME OF DELIVERY. SEE DEALER FOR DETAILS.</p>",
   },
-  leadLink:
-    "https://demo-v2.webbuy.dev#webbuyl=49dbd834-1f86-11f0-b682-2c7ba08d226d",
+  leadLink: "https://demo-v2.webbuy.dev#webbuyl=49dbd834-1f86-11f0-b682-2c7ba08d226d",
   address: "123 Main Streets Billings, MT 59101",
   phone: "(455) 454-5455",
   has: {
