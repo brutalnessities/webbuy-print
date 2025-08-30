@@ -110,6 +110,19 @@
       "trade": "<p>this is a trade disclaimer without any of the nbsp</p>",
       "protection": "<p>this is protection disclaimer without any of the nbsp</p>",
       "incentive": "<p>EVERY EFFORT IS MADE TO ENSURE THE ACCURACY OF INCENTIVES/REBATES. HOWEVER, INCENTIVES AND REBATES CAN CHANGE ANYTIME WITHOUT NOTICE. FINAL DETERMINATION OF AVAILABLE OFFERS AND ELIGIBILITY WILL BE MADE AT THE TIME OF DELIVERY. SEE DEALER FOR DETAILS.</p>"
+    },
+    "has": {
+      "item": true,
+      "accessories": true,
+      "protections": true,
+      "taxesAndFees": true,
+      "incentives": true,
+      "trade": {
+        "accepted": true,
+        "adjustments": true,
+        "fees": true
+      },
+      "secondColumn": true
     }
   }
 }

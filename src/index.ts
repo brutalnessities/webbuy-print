@@ -28,7 +28,7 @@ export function renderPrint(data: PrintData): string {
   }
 
   // testing: save the file to check the render
-  fs.writeFileSync(path.join(__dirname, "test.html"), html);
+  fs.writeFileSync('./dist/test.html', html);
 
   // TODO: remove clipboardy
   clipboard.writeSync(html);
