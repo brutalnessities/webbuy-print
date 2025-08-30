@@ -160,7 +160,7 @@
               <mj-table>
                 {{#each trade.details}}
                   <tr>
-                    <td class="title bold">{{this.title}}</td>
+                    <td class="title bold" style="white-space: nowrap;">{{this.title}}</td>
                     <td align="right" class="value">{{this.value}}</td>
                   </tr>
                 {{/each}}
@@ -226,14 +226,18 @@
       {{#if has.item}}
         <mj-section mj-class="border-bottom pb-2">
           <mj-column>
-            <mj-table>
-              {{{pricing.summary}}}
-              <tr>
-                <td>
-                </td>
-                <td></td>
-              </tr>
-            </mj-table>
+            <!-- this section exists and is used mostly lease but could be implemented in pricing.dueAtSigning
+            {{#if pricing.summary}}
+              <mj-table>
+                {{#each pricing.summary}}
+                  <tr>
+                    <td class="title bold">{{this.title}}</td>
+                    <td align="right" class="value">{{this.value}}</td>
+                  </tr>
+                {{/each}}
+              </mj-table>
+            {{/if}} 
+            -->
 
             <!-- 🔻estimate v. actual🔻 -->
             <mj-table mj-class="pt-2">
@@ -250,13 +254,30 @@
               </tr>
             </mj-table>
 
-            <mj-table>
-              {{{pricing.dueAtSigning}}}
-            </mj-table>
+            <!-- 🔻due at signing🔻 -->
+            {{#if pricing.dueAtSigning}}
+              <mj-table>
+                {{#each pricing.dueAtSigning}}
+                  <tr>
+                    <td class="title bold">{{this.title}}</td>
+                    <td align="right" class="value">{{this.value}}</td>
+                  </tr>
+                {{/each}}
+              </mj-table>
+            {{/if}}
 
-            <mj-table mj-class="pl-2">
-              {{{pricing.dueBreakdown}}}
-            </mj-table>
+            <!-- 🔻due breakdown🔻 -->
+            {{#if pricing.dueBreakdown}}
+              <mj-table mj-class="pl-2">
+                {{#each pricing.dueBreakdown}}
+                  <tr>
+                    <td class="title">{{this.title}}</td>
+                    <td align="right" class="value">{{this.value}}</td>
+                  </tr>
+                {{/each}}
+              </mj-table>
+            {{/if}}
+
           </mj-column>
         </mj-section>
       {{/if}}

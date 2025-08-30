@@ -36,10 +36,6 @@ export function renderPrint(data: PrintData): string {
 
 //test
 renderPrint({
-  date: "2025-04-22 08:30:07",
-  visitorName: "asdoiansd asodinasodi",
-  accountName: "Lead Motors",
-  dealerLogo: "https://webbuy-v2-api-seed-assets.s3-us-west-2.amazonaws.com/accounts/lead_motors.png",
   item: {
     details: [
       { title: "Trim", value: "Type S" },
@@ -88,7 +84,7 @@ renderPrint({
     termRate: "60 mo.",
     termLength: "10,000 mi/yr",
     offerType: "",
-    dueAtSigning: { title: "Due at Signing", value: "$20,036.03" },
+    dueAtSigning: [{ title: "Due at Signing", value: "$20,036.03" }],
     dueBreakdown: [
       { title: "First Monthly Payment", value: "$750.61" },
       { title: "IGS Test Product #1", value: "$117.32" },
@@ -145,9 +141,6 @@ renderPrint({
     incentive:
       "<p>EVERY EFFORT IS MADE TO ENSURE THE ACCURACY OF INCENTIVES/REBATES. HOWEVER, INCENTIVES AND REBATES CAN CHANGE ANYTIME WITHOUT NOTICE. FINAL DETERMINATION OF AVAILABLE OFFERS AND ELIGIBILITY WILL BE MADE AT THE TIME OF DELIVERY. SEE DEALER FOR DETAILS.</p>",
   },
-  leadLink: "https://demo-v2.webbuy.dev#webbuyl=49dbd834-1f86-11f0-b682-2c7ba08d226d",
-  address: "123 Main Streets Billings, MT 59101",
-  phone: "(455) 454-5455",
   has: {
     item: true,
     accessories: true,

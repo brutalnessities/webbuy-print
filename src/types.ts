@@ -6,10 +6,6 @@ export interface RowItem {
 }
 
 export interface PrintData {
-  date: string;
-  visitorName: string;
-  accountName: string;
-  dealerLogo: string;
   item: {
     details: RowItem[];
     ymm: string;
@@ -27,7 +23,7 @@ export interface PrintData {
     termRate: string;
     termLength: string;
     offerType: string;
-    dueAtSigning: RowItem;
+    dueAtSigning: RowItem[];
     dueBreakdown: RowItem[];
     breakdown: RowItem[];
   };
@@ -40,9 +36,6 @@ export interface PrintData {
     protection: string;
     incentive: string;
   };
-  leadLink: string;
-  address: string;
-  phone: string;
   
   // remove
   has: {
