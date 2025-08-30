@@ -34,6 +34,13 @@
         text-decroration="underline"
       />
 
+      <mj-class
+        name="disclaimerHeader"
+        font-size="12px"
+        font-weight="bold"
+        padding="12px 0 6px"
+      />
+
       <mj-class name="h2" font-size="24px" font-weight="bold" />
       <mj-class
         name="h3"
@@ -76,7 +83,7 @@
   </mj-head>
 
   <mj-body>
-    <mj-wrapper padding="50px 10px">
+    <mj-wrapper padding="30px 10px">
 
       <!-- 🔸the VOI/item🔸 -->
       {{#if has.item}}
@@ -97,6 +104,15 @@
                 </tr>
               {{/each}}
             </mj-table>
+          </mj-column>
+        </mj-section>
+        <mj-section>
+          <mj-column>
+            <mj-divider
+              border-color="lightgray"
+              border-width="1px"
+              mj-class="pb-2"
+            ></mj-divider>
           </mj-column>
         </mj-section>
       {{/if}}
@@ -292,11 +308,36 @@
       <!-- 🔸disclaimers🔸 -->
       <mj-section mj-class="pt-4" css-class="disclaimers">
         <mj-column>
-          <mj-text>
-            {{{disclaimers.trade}}}
-            {{{disclaimers.protection}}}
+
+          <!-- Pricing disclaimer -->
+          <mj-text mj-class="disclaimerHeader">Pricing Disclaimer</mj-text>
+          <mj-text font-size="10px">
+            <p>Estimated APR is based on recent national averages and your
+              estimated credit score but does not necessarily represent a rate
+              or payment that will be available to you. Every effort is taken to
+              ensure accurate incentive information is displayed; however,
+              incentives can change without notice at any given time. Final
+              review and eligibility of all incentive offers will be determined
+              at time of delivery.</p>
             {{{disclaimers.incentive}}}
           </mj-text>
+
+          <!-- trade disclaimer -->
+          <mj-text mj-class="disclaimerHeader">Trade-In Offer Disclaimer</mj-text>
+          <mj-text font-size="10px">
+            <p>If we find significant issues not represented here, the offer may
+              change and consequently affect your financing.</p>
+            {{{disclaimers.trade}}}
+          </mj-text>
+
+          <!-- protection disclaimer -->
+          {{#if disclaimers.protection}}
+            <mj-text mj-class="disclaimerHeader">Protection Disclaimer</mj-text>
+            <mj-text font-size="10px">
+              {{{disclaimers.protection}}}
+            </mj-text>
+          {{/if}}
+
         </mj-column>
       </mj-section>
     </mj-wrapper>
