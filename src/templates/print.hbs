@@ -1,19 +1,14 @@
 <mjml>
   <mj-head>
-    <mj-font
-      name="'Open Sans', Roboto, 'San Francisco', Helvetica, Arial, sans-serif"
-    >
+    <mj-font name="'Open Sans', Roboto, 'San Francisco', Helvetica, Arial, sans-serif">
     </mj-font>
 
     <mj-style inline="inline">
-      .disclaimers p { margin: 0 0 5px; font-size: 10px; } .pl-2 { padding-left:
-      12px; } .pl-4 { padding-left: 24px; } .title { padding-left: 20px;
-      padding-right: 12px; text-indent: -8px; } .value { white-space: nowrap;
-      vertical-align: top; } .underline { text-decoration: underline; } .bold {
-      font-weight: bold; } .estimated { color: #2e616f; white-space: nowrap; }
-      .actual { border-left: 2px solid #80808080; padding-left: 6px;
-      margin-left: 3px; color:#808080; font-weight: normal } .payment {
-      font-size: 20px; color:#2e616f; font-weight: bolder; }
+      .disclaimers p { margin: 0 0 5px; font-size: 10px; } .pl-2 { padding-left: 12px; } .pl-4 { padding-left: 24px; }
+      .title { padding-left: 20px; padding-right: 12px; text-indent: -8px; } .value { white-space: nowrap;
+      vertical-align: top; } .underline { text-decoration: underline; } .bold { font-weight: bold; } .estimated { color:
+      #2e616f; white-space: nowrap; } .actual { border-left: 2px solid #80808080; padding-left: 6px; margin-left: 3px;
+      color:#808080; font-weight: normal } .payment { font-size: 20px; color:#2e616f; font-weight: bolder; }
     </mj-style>
 
     <mj-style>
@@ -28,32 +23,13 @@
       <mj-image />
       <mj-section padding="0" />
 
-      <mj-class
-        name="nestedHeader"
-        padding="12px 12px 0"
-        text-decroration="underline"
-      />
+      <mj-class name="nestedHeader" padding="12px 12px 0" text-decroration="underline" />
 
-      <mj-class
-        name="disclaimerHeader"
-        font-size="12px"
-        font-weight="bold"
-        padding="12px 0 6px"
-      />
+      <mj-class name="disclaimerHeader" font-size="12px" font-weight="bold" padding="12px 0 6px" />
 
       <mj-class name="h2" font-size="24px" font-weight="bold" />
-      <mj-class
-        name="h3"
-        font-size="18px"
-        font-weight="bold"
-        padding="12px 0 6px"
-      />
-      <mj-class
-        name="h4"
-        font-size="16px"
-        font-weight="bold"
-        padding-bottom="6px"
-      />
+      <mj-class name="h3" font-size="18px" font-weight="bold" padding="12px 0 6px" />
+      <mj-class name="h4" font-size="16px" font-weight="bold" padding-bottom="6px" />
 
       <mj-class name="pb-0" padding-bottom="0" />
       <mj-class name="pb-1" padding-bottom="6px" />
@@ -108,11 +84,7 @@
         </mj-section>
         <mj-section>
           <mj-column>
-            <mj-divider
-              border-color="lightgray"
-              border-width="1px"
-              mj-class="pb-2"
-            ></mj-divider>
+            <mj-divider border-color="lightgray" border-width="1px" mj-class="pb-2"></mj-divider>
           </mj-column>
         </mj-section>
       {{/if}}
@@ -193,11 +165,7 @@
                   </tr>
                 {{/each}}
               </mj-table>
-              <mj-divider
-                border-color="lightgray"
-                border-width="1px"
-                mj-class="pb-2"
-              ></mj-divider>
+              <mj-divider border-color="lightgray" border-width="1px" mj-class="pb-2"></mj-divider>
 
               <!-- valuation -->
               <mj-text mj-class="h4">Trade-in</mj-text>
@@ -212,10 +180,7 @@
 
               <!-- costs -->
               {{#if has.trade.adjustments}}
-                <mj-text
-                  mj-class="nestedHeader"
-                  css-class="underline"
-                >Reconditioning Costs</mj-text>
+                <mj-text mj-class="nestedHeader" css-class="underline">Reconditioning Costs</mj-text>
                 <mj-table mj-class="pl-3">
                   {{#each trade.adjustments}}
                     <tr>
@@ -228,10 +193,7 @@
 
               <!-- fees -->
               {{#if has.trade.fees}}
-                <mj-text
-                  mj-class="nestedHeader"
-                  css-class="underline"
-                >Reconditioning Fees</mj-text>
+                <mj-text mj-class="nestedHeader" css-class="underline">Reconditioning Fees</mj-text>
                 <mj-table mj-class="pl-3">
                   {{#each trade.fees}}
                     <tr>
@@ -281,16 +243,10 @@
                     <span class="actual">Actual</span>
                   </span>
 
-                  <p
-                    style="margin: 0; line-height: 14px; font-size: 14px;"
-                  >{{pricing.termRate}}</p>
-                  <p
-                    style="margin: 0 0 6px; line-height: 16px; font-size: 14px;"
-                  >{{pricing.termLength}}</p>
+                  <p style="margin: 0; line-height: 14px; font-size: 14px;">{{pricing.termRate}}</p>
+                  <p style="margin: 0 0 6px; line-height: 16px; font-size: 14px;">{{pricing.termLength}}</p>
                 </td>
-                <td align="right"><span
-                    class="payment"
-                  >{{pricing.monthlyPayment}}</span>/mo.</td>
+                <td align="right"><span class="payment">{{pricing.monthlyPayment}}</span>/mo.</td>
               </tr>
             </mj-table>
 
@@ -312,21 +268,18 @@
           <!-- Pricing disclaimer -->
           <mj-text mj-class="disclaimerHeader">Pricing Disclaimer</mj-text>
           <mj-text font-size="10px">
-            <p>Estimated APR is based on recent national averages and your
-              estimated credit score but does not necessarily represent a rate
-              or payment that will be available to you. Every effort is taken to
-              ensure accurate incentive information is displayed; however,
-              incentives can change without notice at any given time. Final
-              review and eligibility of all incentive offers will be determined
-              at time of delivery.</p>
+            <p>Estimated APR is based on recent national averages and your estimated credit score but does not
+              necessarily represent a rate or payment that will be available to you. Every effort is taken to ensure
+              accurate incentive information is displayed; however, incentives can change without notice at any given
+              time. Final review and eligibility of all incentive offers will be determined at time of delivery.</p>
             {{{disclaimers.incentive}}}
           </mj-text>
 
           <!-- trade disclaimer -->
           <mj-text mj-class="disclaimerHeader">Trade-In Offer Disclaimer</mj-text>
           <mj-text font-size="10px">
-            <p>If we find significant issues not represented here, the offer may
-              change and consequently affect your financing.</p>
+            <p>If we find significant issues not represented here, the offer may change and consequently affect your
+              financing.</p>
             {{{disclaimers.trade}}}
           </mj-text>
 
