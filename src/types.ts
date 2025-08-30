@@ -5,40 +5,48 @@ export interface RowItem {
   calculation?: string;
 }
 
+export interface ItemData {
+  details: RowItem[];
+  ymm: string;
+  image: string;
+}
+
+export interface TradeData {
+  valuation: RowItem[];
+  details: RowItem[];
+  adjustments?: RowItem[];
+  fees?: RowItem[];
+}
+
+export interface PricingData {
+  monthlyPayment: string;
+  summary: RowItem[];
+  termRate: string;
+  termLength: string;
+  offerType: string;
+  dueAtSigning: RowItem[];
+  dueBreakdown: RowItem[];
+  breakdown: RowItem[];
+}
+
+interface DisclaimerData {
+  trade: string;
+  protection: string;
+  incentive?: string;
+}
+
 export interface PrintData {
-  item: {
-    details: RowItem[];
-    ymm: string;
-    image: string;
-  };
-  trade: {
-    valuation: RowItem[];
-    details: RowItem[];
-    adjustments: RowItem[];
-    fees: RowItem[];
-  };
-  pricing: {
-    monthlyPayment: string;
-    summary: RowItem[];
-    termRate: string;
-    termLength: string;
-    offerType: string;
-    dueAtSigning: RowItem[];
-    dueBreakdown: RowItem[];
-    breakdown: RowItem[];
-  };
-  incentives: RowItem[];
-  accessories: RowItem[];
-  protections: RowItem[];
-  taxesAndFees: RowItem[];
-  disclaimers: {
-    trade: string;
-    protection: string;
-    incentive: string;
-  };
+  item?: ItemData;
+  trade?: TradeData;
+  pricing?: PricingData;
+  incentives?: RowItem[];
+  accessories?: RowItem[];
+  protections?: RowItem[];
+  taxesAndFees?: RowItem[];
+  disclaimers: DisclaimerData;
   
   // remove
-  has: {
+  has?: {
     item: boolean;
     accessories: boolean;
     protections: boolean;
@@ -51,4 +59,15 @@ export interface PrintData {
     };
     secondColumn: boolean;
   };
+}
+
+export interface EmailPrintData {
+  date: string;
+  visitorName: string;
+  accountName: string;
+  dealerLogo: string;
+  leadLink: string;
+  address: string;
+  phone: string;
+  data: PrintData;
 }
