@@ -31,7 +31,7 @@ export function renderPrint(data: PrintData): string {
   fs.writeFileSync(path.join(__dirname, "test.html"), html);
 
   // TODO: remove clipboardy
-  clipboard.writeSync(`{html: ${html}}`);
+  clipboard.writeSync(html);
   return html;
 }
 
