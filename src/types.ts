@@ -1,8 +1,8 @@
 export interface RowItem {
   title: string;
-  value: string;
+  value: string | null; //if null, do not display
   category?: string;
-  calculation?: string;
+  calculate?: string;
 }
 
 export interface ItemData {
