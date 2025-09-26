@@ -1,4 +1,4 @@
-```
+
     ___       ___  _________  ________  ________  ___  ___    ___    ___     ___   ___  _________             
 @@@|\  \@@@@@|\  \|\   _____\|\   __  \|\   __  \|\  \|\  \@@|\  \@@/  /@@@@|\  \@/|  ||\   ___  \@@@@@@@
 @@@\ \  \@@@@\ \  \ \  \____|\ \  \|\ /@ \  \|\ /@ \  \ \  \@\ \  \/  /@@@@@\ \  \ |  |\ \__\_/  /@@@@@@@
@@ -8,7 +8,6 @@
 @@@@@@@\|____|\|_____|\|________|\|_______|\|_______|\|_______|___|@@@@@@@@@@@@@\|___|@@@@@\|________|@@@
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
                                                                                                          
-```
 
 This package is designed to reduce drift across the client, admin, and email prints. It uses MJML at the base to support email oriented HTML and Handlebars implements interpolation and various operational helpers for dynamic layouts.
 
