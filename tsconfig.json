@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "types": ["node"],
     "target": "ES2020",
-    "module": "commonjs",
+    "module": "ESNext",
+    "declaration": true,
+    "outDir": "dist",
+    "rootDir": "src",
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "rootDir": ".",
-    "outDir": "./dist", // if out path for a file is same as its src path, nothing will be emitted
-    "resolveJsonModule": true
-  }
+    "strict": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true
+  },
+  "include": ["src"]
 }

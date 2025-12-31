@@ -4,14 +4,29 @@
     </mj-font>
 
     <mj-style>
-      .disclaimers p { margin: 0 0 5px; font-size: 10px; } .pl-2 { padding-left: 12px; } .pl-4 { padding-left: 24px; }
-      .title { padding-left: 20px; padding-right: 12px; text-indent: -8px; } .value { white-space: nowrap !important;
-      vertical-align: top; } .underline { text-decoration: underline; } .bold { font-weight: bold; } .estimated { color:
-      #2e616f; white-space: nowrap; } .actual { border-left: 2px solid #80808080; padding-left: 6px; margin-left: 3px;
-      color:#808080; font-weight: normal } .payment { font-size: 20px; color:#2e616f; font-weight: bolder; }
-      .left-col-image td { padding: 0 0 12px; } .left-col td { padding: 0; } .right-col td { padding: 0; } @media only
-      screen and (min-width: 480px) { .left-col-image td { padding: 0 24px 0 0; } .left-col td { padding: 0 24px; }
-      .right-col td { padding: 0 0 0 24px; } }
+      .disclaimers p { margin: 0 0 5px; font-size: 10px; } 
+      .pl-2 { padding-left: 12px; } 
+      .pl-4 { padding-left: 24px; }
+      .title { padding-left: 20px; padding-right: 12px; text-indent: -8px; } 
+      .value { white-space: nowrap !important; vertical-align: top; } 
+      .underline { text-decoration: underline; } 
+      .bold { font-weight: bold; } 
+      .estimated { color: #2e616f; white-space: nowrap; } 
+      .actual { 
+        border-left: 2px solid #80808080; 
+        padding-left: 6px; margin-left: 3px; 
+        color:#808080; 
+        font-weight: normal 
+      } 
+      .payment { font-size: 20px; color:#2e616f; font-weight: bolder; }
+      .left-col-image td { padding: 0 0 12px; } 
+      .left-col td { padding: 0; } 
+      .right-col td { padding: 0; } 
+      @media only screen and (min-width: 480px) { 
+        .left-col-image td { padding: 0 24px 0 0; } 
+        .left-col td { padding: 0 24px; }
+        .right-col td { padding: 0 0 0 24px; }
+      }
     </mj-style>
 
     <mj-attributes>
@@ -64,9 +79,7 @@
       {{#if has.item}}
         <mj-section mj-class="border-bottom pb-2">
           <mj-column css-class="left-col-image">
-            <mj-image
-              src="{{item.image}}"
-            ></mj-image>
+            <mj-image src="{{item.image}}"></mj-image>
           </mj-column>
 
           <mj-column>

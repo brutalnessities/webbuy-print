@@ -1,7 +1,6 @@
 import fs from "fs";
 import Handlebars from "handlebars";
 import mjml2html from "mjml";
-import clipboard from "clipboardy";
 import { EmailPrintData } from "../src/types";
 import mockData from "../mocks/finance-with-trade.json";
 
@@ -30,7 +29,6 @@ export function compile(data: EmailPrintData) {
 
   // Convert MJML → HTML
   const { html } = mjml2html(mjmlWithPartials, { validationLevel: "soft" });
-  clipboard.writeSync(html);
   return html;
 }
 
