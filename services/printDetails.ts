@@ -5,7 +5,7 @@ import mjml2html from "mjml";
 import mockData from "../mocks/finance-with-trade.json";
 
 // Read the MJML/Handlebars template
-const templatePath = path.join(__dirname, "templates", "print.hbs");
+const templatePath = path.join(__dirname, "templates", "print.mjml.hbs");
 const templateSource = fs.readFileSync(templatePath, "utf-8");
 
 // Compile Handlebars

@@ -4,11 +4,12 @@
     "module": "ESNext",
     "declaration": true,
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": ".",
     "moduleResolution": "node",
     "strict": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["node"]
   },
-  "include": ["src"]
+  "include": ["src", "scripts", "src/handlebars.d.ts", "src/index.ts"]
 }

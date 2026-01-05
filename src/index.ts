@@ -1,61 +1,25 @@
-import fs from "fs";
-import path from "path";
 import Handlebars from "handlebars";
-import mjml2html from "mjml";
 import { PrintData } from "./types";
 import mockData from "../mocks/finance-with-trade.json" with { type: "json" };
-import { html, LitElement } from "lit-element";
-import { minify } from "html-minifier-terser";
-// import { fileURLToPath } from "url";
-// import leadData from "../mocks/leadsResponse.json";
-// import { dataFromLead } from "../helpers/parseLead";
 
-// Read the MJML/Handlebars template
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-// const templatePath = path.join(__dirname, "templates", "print.hbs");
-const templatePath = path.join(process.cwd(), "src", "templates", "print.hbs");
-const templateSource = fs.readFileSync(templatePath, "utf-8");
+// DO NOT USE MJML TEMPLATES - USE PRECOMPILED HTML TEMPLATES - BROWSER CANNOT PROCESS MJML
+import htmlTemplate from "./templates/html/print.html.hbs";
 
-// Compile Handlebars
-const printTemplate = Handlebars.compile(templateSource);
+// export class PrintComponent extends LitElement {
+//   constructor() {
+//     super();
+//   }
 
-// Render function
-export async function renderPrint(data: PrintData): Promise<string> {
-  // Preprocess items for subtotal
-  // const data = dataFromLead(leadData.data.lead.data);
+  // render() {
+  //   return html`${renderPrint(mockData.data)}`;
+  // }
+// }
 
-  // Step 1: Inject data into MJML template
-  const mjmlWithData = printTemplate(data);
+// customElements.define("print-component", PrintComponent);
+// renderPrint(mockData.data);
 
-  // Step 2: Compile MJML to HTML
-  const { html, errors } = mjml2html(mjmlWithData);
-  const minifiedHtml = await minify(html, {
-  collapseWhitespace: true,
-  removeComments: true,
-  minifyCSS: true,
-  minifyJS: true,
-});
-
-  if (errors && errors.length > 0) {
-    console.warn("MJML compilation errors:", errors);
-  }
-
-  // testing: save the file to check the render
-  fs.writeFileSync("./dist/test.html", minifiedHtml);
-
-  return minifiedHtml;
+export function renderPrint(data?: PrintData): string {
+  const out = Handlebars.compile(htmlTemplate)(data ?? mockData.data);
+  console.log(out);
+  return out;
 }
-
-export class PrintComponent extends LitElement {
-  constructor() {
-    super();
-  }
-
-  render() {
-    return html`${renderPrint(mockData.data)}`;
-  }
-}
-
-customElements.define("print-component", PrintComponent);
-renderPrint(mockData.data);

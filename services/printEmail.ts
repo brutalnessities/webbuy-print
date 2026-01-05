@@ -6,9 +6,9 @@ import mockData from "../mocks/finance-with-trade.json";
 
 export function compile(data: EmailPrintData) {
   // Load partials
-  const header = fs.readFileSync("./templates/partials/header.hbs", "utf8");
-  const body = fs.readFileSync("./templates/partials/print.hbs", "utf8");
-  const footer = fs.readFileSync("./templates/partials/footer.hbs", "utf8");
+  const header = fs.readFileSync("./templates/partials/header.mjml.hbs", "utf8");
+  const body = fs.readFileSync("./templates/partials/print.mjml.hbs", "utf8");
+  const footer = fs.readFileSync("./templates/partials/footer.mjml.hbs", "utf8");
 
   // Render parts
   const renderedHeader = Handlebars.compile(header)(data);
