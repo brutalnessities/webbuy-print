@@ -3,10 +3,9 @@ import path from "path";
 import Handlebars from "handlebars";
 import mjml2html from "mjml";
 import mockData from "../mocks/finance-with-trade.json";
-import clipboard from "clipboardy";
 
 // Read the MJML/Handlebars template
-const templatePath = path.join(__dirname, "templates", "print.hbs");
+const templatePath = path.join(__dirname, "templates", "print.mjml.hbs");
 const templateSource = fs.readFileSync(templatePath, "utf-8");
 
 // Compile Handlebars
@@ -29,8 +28,6 @@ export function compile(data: any): string {
   // testing: save the file to check the render
   fs.writeFileSync(path.join(__dirname, "test.html"), html);
 
-  // TODO: remove clipboardy
-  clipboard.writeSync(`{html: ${html}}`);
   return html;
 }
 
